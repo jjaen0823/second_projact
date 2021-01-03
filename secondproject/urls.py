@@ -14,14 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 import blog.views
+import portfolio.views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog.views.home, name = 'home'),
-    # path-converter <type:name>: 지정한 converter type의 name변수를 view 함수로 넘겨라
-    path('blog/<int:blog_id>/', blog.views.detail, name = 'detail'),
-    path('bolg/write/', blog.views.write, name = 'write'),
-    path('blog/create/', blog.views.create, name = 'create'), # call create function
-]
+    path('blog/', include('blog.urls')),
+    path('portfolio/', portfolio.views.portfolio, name = 'portfolio'),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 이렇게 해야 올린 이미지를 읽어올 수 있다.
+

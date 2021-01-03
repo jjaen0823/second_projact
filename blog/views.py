@@ -23,4 +23,4 @@ def create(request):
     blog.body = request.GET['body']
     blog.pub_date = timezone.datetime.now()
     blog.save()  # queryset method(ex) object.delete())
-    return redirect('/blog/' + str(blog.id))  # redirect: 요청을 처리하고 보여주는 페이지(요청 들어오면 저쪽 url로 보내버려)
+    return redirect('/blog/' + str(blog.id))  # redirect: 요청을 처리하고 보여주는 페이지(요청 들어오면 저쪽 url로 보내버려) # url is string
