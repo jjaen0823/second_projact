@@ -17,8 +17,6 @@ def home(request):
     return render(request, 'blog/home.html', {'blogs': blogs, 'posts': posts})
 
 
-
-
 def detail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk=blog_id)  # 모델명, 불러올 blog 게시글의 id
                                                        # pk: 객체들을 구분할 수 있는 key(urls.py와 변수명이 다르면 오류)
