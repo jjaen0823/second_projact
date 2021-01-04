@@ -25,5 +25,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('accounts/', include('accounts.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 이렇게 해야 올린 이미지를 읽어올 수 있다.
 

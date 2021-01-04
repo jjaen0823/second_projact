@@ -20,7 +20,6 @@ def signup(request):
     else:
         return render(request, 'accounts/signup.html')
 
-
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -33,7 +32,6 @@ def login(request):
             return render(request, 'accounts/login.html', {'error': 'username or password is incorrect.'})
     else:
         return render(request, 'accounts/login.html')
-
 
 def logout(request):
     if request.method == 'POST':
