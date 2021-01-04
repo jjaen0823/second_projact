@@ -1,0 +1,52 @@
+{% extends "blog_base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <br>
+    <h1>Login</h1>
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{% url 'login'%}">
+        {% csrf_token %}
+        <form>
+            Username:
+            <br>
+            <input name="username" type="text" value="">
+            <br>
+            Password:
+            <br>
+            <input name="password" type="password" value="">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form>
+    </form>
+</div>
+
+{% endblock %}
+
+<!--<form class="d-flex" style="position: absolute; right: 50px;">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown active" aria-current="page">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" href="#" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item"><a class="nav-link active" aria-current="page" href="{% url 'write' %}">Write</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+                            <form id="logout" method="POST" action="">
+                                {% csrf_token %} <input type="hidden"/>
+                            </form>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Signup</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <input class="form-control me-2" type="search"  placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>-->

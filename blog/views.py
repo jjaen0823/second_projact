@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect  
 from django.utils import timezone    # get_object_or_404: object를 가져오고 없으면 404 에러를 띄우라는 내용의 함수
+from django.core.paginator import Paginator
 from .models import Blog
 
 
@@ -7,7 +8,16 @@ from .models import Blog
 def home(request):
     blogs = Blog.objects  # 모델로부터 전달받은 '객체목록'을 'queryset'이라고 부른다
                           # 이러한 'queryset'들을 처리해주는 방법을 메소드라고 한다
-    return render(request, 'blog/home.html', {'blogs': blogs})
+
+    blog_list = Blog.objects.all()  # 블로그 모든 글
+    paginator = Paginator(blog_list, 3)  # 블로그  객체 3개를 한 페이지로 자르기
+    page = request.GET.get('page')  # request 된 페이지가 뭔지를 알아낸다(request 페이지를 변수에 담는다)
+    posts = paginator.get_page(page)  # request 된 페이지를 얻어온다
+
+    return render(request, 'blog/home.html', {'blogs': blogs, 'posts': posts})
+
+
+
 
 def detail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk=blog_id)  # 모델명, 불러올 blog 게시글의 id

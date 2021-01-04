@@ -1,0 +1,36 @@
+{% extends "blog_base.html" %}
+{% block content %}
+
+
+
+<div class="container">
+
+    <br>
+    <h1>Sign Up!</h1>
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <form>
+            Username:
+            <br>
+            <input name="username" type="text" value="">
+            <br>
+            Password:
+            <br>
+            <input name="password1" type="password" value="">
+            <br>
+            Confirm Password:
+            <br>
+            <input name="password2" type="password" value="">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Sign Up!">
+        </form>
+    </form>
+</div>
+
+
+{% endblock %}
