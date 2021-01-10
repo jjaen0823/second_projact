@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'blog/templates'),
-                 os.path.join(BASE_DIR, 'portfolio/templates')],
+                 os.path.join(BASE_DIR, 'portfolio/templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,10 +80,21 @@ WSGI_APPLICATION = 'secondproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'postgres',
+        'PASSWORD': 'p390628!',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
+    
 }
+ 
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #   'NAME': BASE_DIR / 'db.sqlite3',
+    #}
+    
 
 
 # Password validation
