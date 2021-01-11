@@ -11,3 +11,9 @@ local_settings.py
 # datebase
 db.sqlite3
 media
+
+
+# Elastic BeanStalk Files
+.elasticbeanstalk/*
+.elasticbeanstalk/*.cfg.yml
+.elasticbeanstalk/*.global.yml
