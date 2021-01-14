@@ -12,8 +12,10 @@ local_settings.py
 db.sqlite3
 media
 
+#no secrets.json file
+*secrets.json
 
 # Elastic BeanStalk Files
 .elasticbeanstalk/*
-.elasticbeanstalk/*.cfg.yml
-.elasticbeanstalk/*.global.yml
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
